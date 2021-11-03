@@ -1,0 +1,11 @@
+Steps to run the application:
+1. Extract and open folder in VS Code
+2. Got to api folder, install packages and run 
+   cd api
+   npm i
+   npm i config cors express express-validator mongoose
+   nodemon index.js
+3. Got to ui folder, install packages and run 
+   cd ui
+   npm i
+   npm start

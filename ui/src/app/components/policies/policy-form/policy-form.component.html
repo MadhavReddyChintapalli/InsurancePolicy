@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-md-6">
+    <form class="form">
+      <div *ngIf="!isEdit" class="mt-4 mb-4">
+        <h2>Add Policy</h2>
+      </div>
+      <div *ngIf="isEdit" class="mt-4 mb-4">
+        <h2>Update Policy</h2>
+      </div>
+      <div class="mb-3">
+        <label>Policy Number</label>
+        <input
+          type="text"
+          name="number"
+          class="form-control"
+          #number
+          [(ngModel)]="currentPolicy.number"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label>Start Date</label>
+        <input
+          type="date"
+          name="startDate"
+          class="form-control"
+          #startDate
+          [(ngModel)]="currentPolicy.startDate"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label>End Date</label>
+        <input
+          type="date"
+          name="endDate"
+          class="form-control"
+          #endDate
+          [(ngModel)]="currentPolicy.endDate"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label>Description</label>
+        <textarea
+          name="description"
+          rows="3"
+          cols="50"
+          class="form-control"
+          #description
+          [(ngModel)]="currentPolicy.description"
+        ></textarea>
+      </div>
+      <div class="mb-3">
+        <label>First Name </label>
+        <input
+          type="text"
+          name="firstName"
+          class="form-control"
+          #firstName
+          [(ngModel)]="currentPolicy.firstName"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label>Sur/Last Name</label>
+        <input
+          type="text"
+          name="surName"
+          class="form-control"
+          #surName
+          [(ngModel)]="currentPolicy.surName"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label>Date of Birth</label>
+        <input
+          type="date"
+          name="dob"
+          class="form-control"
+          #dob
+          [(ngModel)]="currentPolicy.dob"
+          required
+        />
+      </div>
+      <div *ngIf="!isEdit" class="d-grid gap-2 mb-3">
+        <button
+          class="btn btn-primary"
+          [disabled]="
+            currentPolicy.number == '' ||
+            currentPolicy.startDate == '' ||
+            currentPolicy.endDate == '' ||
+            currentPolicy.firstName == '' ||
+            currentPolicy.surName == '' ||
+            currentPolicy.dob == ''
+          "
+          (click)="
+            addPolicy(
+              number.value,
+              startDate.value,
+              endDate.value,
+              description.value,
+              firstName.value,
+              surName.value,
+              dob.value
+            )
+          "
+        >
+          Add Policy
+        </button>
+      </div>
+      <div *ngIf="isEdit" class="d-grid gap-2 mb-3">
+        <button
+          class="btn btn-primary"
+          (click)="updatePolicy()"
+          [disabled]="
+            currentPolicy.number == '' ||
+            currentPolicy.startDate == '' ||
+            currentPolicy.endDate == '' ||
+            currentPolicy.firstName == '' ||
+            currentPolicy.surName == '' ||
+            currentPolicy.dob == ''
+          "
+        >
+          Update Policy
+        </button>
+      </div>
+      <div class="d-grid gap-2 mb-3">
+        <button class="btn btn-light" (click)="clearAll()">Clear</button>
+      </div>
+    </form>
+  </div>
+</div>

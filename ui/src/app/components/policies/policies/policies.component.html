@@ -1,0 +1,30 @@
+<app-policy-form
+  [isEdit]="isEdit"
+  [currentPolicy]="currentPolicy"
+  (newPolicy)="onNewPolicy($event)"
+  (updatedPolicy)="onUpdatedPolicy($event)"
+></app-policy-form>
+<div
+  class="card mt-3 mb-3 me-3"
+  [ngStyle]="{ width: '32%', display: 'inline-block' }"
+  *ngFor="let policy of policies"
+>
+  <div class="card-body">
+    <h3 class="card-text">Policy Number: {{ policy.number }}</h3>
+    <p class="card-text">Start Date: {{ policy.startDate | date }}</p>
+    <p class="card-text">End Date: {{ policy.endDate | date }}</p>
+    <p class="card-text">Description: {{ policy.description }}</p>
+    <p class="card-text">First Name: {{ policy.firstName }}</p>
+    <p class="card-text">Sur Name: {{ policy.surName }}</p>
+    <p class="card-text">Date of Birth: {{ policy.dob | date }}</p>
+    <p>
+      <button class="btn btn-dark btn-sm" (click)="updatePolicy(policy)">
+        Edit
+      </button>
+      {{ "" }}
+      <button class="btn btn-danger btn-sm" (click)="deletePolicy(policy)">
+        Delete
+      </button>
+    </p>
+  </div>
+</div>
